@@ -8,7 +8,7 @@ const Checkbox = ({ label, id, name, checked, type }) => {
         className="form-inputs"
         id={id}
         name={name}
-        checked={checked}
+        checked="checked"
         type={type}
       />
     </div>

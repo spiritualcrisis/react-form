@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import FormContext from "../Context/FormContext";
+import { FormContext } from "../Context/FormContext";
+import FormInput from "./formInput";
 
 const Form = () => {
   const [formData, setFormData] = useState([]);
 
-  const handleSubmitUserData = () => {
-    //e.preventDefault();
-  };
   console.log("rerender");
   //fetch data from API
   const fetchFormData = async () => {
@@ -17,7 +15,20 @@ const Form = () => {
   useEffect(() => {
     fetchFormData();
   }, []);
-  const handleChange = () => {};
+  const handleChange = (eleId, event) => {
+    const modifiedFormData = formData.map((formEle) => {
+      console.log(formEle);
+      return formEle.id === parseInt(eleId)
+        ? { ...formEle, value: event.target.value }
+        : formEle;
+    });
+    console.log(modifiedFormData);
+    setFormData(modifiedFormData);
+  };
+  const handleSubmitUserData = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
 
   return (
     <FormContext.Provider value={{ handleChange }}>

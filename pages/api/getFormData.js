@@ -5,7 +5,6 @@ const FORM_DATA_USER = [
     name: "Username",
     label: "user Name",
     placeholder: "type user name",
-    checked: null,
     value: "User",
   },
   {
@@ -14,6 +13,7 @@ const FORM_DATA_USER = [
     name: "Employed",
     label: "Employment status",
     placeholder: "",
+    checked: "checked",
     value: true,
   },
   {
@@ -22,7 +22,8 @@ const FORM_DATA_USER = [
     name: "Job ready",
     label: "Job Ready",
     placeholder: "select Job ready status",
-    value: false,
+    checked: true,
+    value: true,
   },
   {
     id: 3,
