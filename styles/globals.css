@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+.form-inputs {
+  padding: 10px;
+  margin-bottom: 10;
+}
+.user-form {
+  width: 20%;
+  margin: auto;
+  height: 80vh;
+  margin-top: 20%;
+}
