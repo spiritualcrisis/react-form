@@ -34,7 +34,7 @@ const FORM_DATA_USER = [
     value: "none",
   },
   {
-    id: 5,
+    id: 4,
     type: "text",
     name: "Avatar",
     label: "Avatar URL",

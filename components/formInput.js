@@ -5,7 +5,6 @@ import Radio from "./radio";
 
 const FormInput = (props) => {
   const { type, label, value, placeholder, checked, id, name } = props;
-  console.log(type);
   switch (type) {
     case "checkbox":
       return (
@@ -34,7 +33,6 @@ const FormInput = (props) => {
         <Input
           label={label}
           value={value}
-          checked={checked}
           name={name}
           type={type}
           placeholder={placeholder}
