@@ -15,8 +15,7 @@ const Form = () => {
   const handleChange = (eleId, event) => {
     const changedFormData = [...formData];
     changedFormData[eleId].value = event.target.value;
-    const modifiedFormData = changedFormData;
-    setFormData(modifiedFormData);
+    setFormData(changedFormData);
   };
   const handleSubmitUserData = (e) => {
     e.preventDefault();
