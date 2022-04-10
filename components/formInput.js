@@ -4,7 +4,8 @@ import Input from "./Input";
 import Radio from "./radio";
 
 const FormInput = (props) => {
-  const { type, label, value, placeholder, checked, id, name } = props;
+  const { type, label, value, placeholder, checked, id, name, handleChange } =
+    props;
   switch (type) {
     case "checkbox":
       return (
@@ -15,6 +16,7 @@ const FormInput = (props) => {
           type={type}
           name={name}
           id={id}
+          handleChange={handleChange}
         />
       );
     case "radio":
@@ -26,6 +28,7 @@ const FormInput = (props) => {
           type={type}
           name={name}
           id={id}
+          handleChange={handleChange}
         />
       );
     default:
@@ -37,6 +40,7 @@ const FormInput = (props) => {
           type={type}
           placeholder={placeholder}
           id={id}
+          handleChange={handleChange}
         />
       );
   }

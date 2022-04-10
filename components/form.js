@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { FormContext } from "../Context/FormContext";
+import React, { Suspense, useEffect, useState } from "react";
 import FormInput from "./formInput";
 
 const Form = () => {
   const [formData, setFormData] = useState([]);
-
-  console.log("rerender");
   //fetch data from API
   const fetchFormData = async () => {
     let formDataRes = await fetch("/api/getFormData");
@@ -16,32 +13,28 @@ const Form = () => {
     fetchFormData();
   }, []);
   const handleChange = (eleId, event) => {
-    const modifiedFormData = formData.map((formEle) => {
-      console.log(formEle);
-      return formEle.id === parseInt(eleId)
-        ? { ...formEle, value: event.target.value }
-        : formEle;
-    });
-    console.log(modifiedFormData);
+    const changedFormData = [...formData];
+    changedFormData[eleId].value = event.target.value;
+    const modifiedFormData = changedFormData;
     setFormData(modifiedFormData);
   };
   const handleSubmitUserData = (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(formData); // logging details
   };
 
   return (
-    <FormContext.Provider value={{ handleChange }}>
-      <div>
-        <form onSubmit={handleSubmitUserData} className="user-form">
-          {formData.map((input) => {
-            return <FormInput key={input.id} {...input} />;
-          })}
+    <div className="container lg:max-w-xl align-items mx-auto justify-items-center ">
+      <form onSubmit={handleSubmitUserData} className="user-form">
+        {formData.map((input) => {
+          return (
+            <FormInput key={input.id} {...input} handleChange={handleChange} />
+          );
+        })}
 
-          <button>Submit</button>
-        </form>
-      </div>
-    </FormContext.Provider>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 };
 
